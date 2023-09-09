@@ -3,11 +3,20 @@
 {% block titulo %}Login{% endblock %}
 
 {% block conteudo %}
-    <form action="/autenticar">
-        <label for="nome_usuario">E-mail:</label>
-        <input type="text" name="nome_usuario"> <br>
-        <label for="senha">Senha:</label>
-        <input type="password" name="senha"> <br>
-        <button type="submit">Login</button>
-    </form>
+{% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+    <ul>
+        {% for msg in mensagens %}
+        <li>{{ msg }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+<form action="/autenticar" method="POST">
+    <label for="nome_usuario">E-mail:</label>
+    <input type="text" name="nome_usuario"> <br>
+    <label for="senha">Senha:</label>
+    <input type="password" name="senha"> <br>
+    <button type="submit">Login</button>
+</form>
 {% endblock %}

@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect
 
 app = Flask(__name__, template_folder='templates')
+
+app.config['SECRET_KEY'] = 'password'
 
 @app.route('/')
 @app.route('/index')
@@ -23,9 +25,18 @@ def login():
 
 @app.route('/autenticar', methods=['GET', 'POST'])
 def autenticar():
-    usuario = request.args.get('nome_usuario')
-    senha = request.args.get('senha')
-    return f'Usuário: {usuario} e Senha: {senha}'
+    #Método GET:
+    #usuario = request.args.get('nome_usuario')
+    #senha = request.args.get('senha')
+    #return f'Usuário: {usuario} e Senha: {senha}'
+    #Método POST:
+    usuario = request.form.get('nome_usuario')
+    senha = request.form.get('senha')
+    if usuario == 'admin' and senha == 'ifro':     #Teste de condição para fazer login.
+        return f'Usuário: {usuario} e Senha: {senha}'
+    else:
+        flash("Dados inválidos.")   #Caso não sejam os argumentos esperados redireciona para /login
+        return redirect('/login')
 
 if __name__ == '__main__':
     app.run()
