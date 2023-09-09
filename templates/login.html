@@ -12,11 +12,20 @@
     </ul>
     {% endif %}
 
-<form action="/autenticar" method="POST">
+    <!--Chama Javascript para validar a senha.-->
+<form action="/autenticar" method="POST" onsubmit="return validarSenha()">
+    <!--Substituição
     <label for="nome_usuario">E-mail:</label>
     <input type="text" name="nome_usuario"> <br>
     <label for="senha">Senha:</label>
     <input type="password" name="senha"> <br>
     <button type="submit">Login</button>
+    -->
+
+    <label for="username">Usuário:</label>
+    <input type="text" id="nome_usuario" name="nome_usuario" required><br><br>
+    <label for="password">Senha:</label>
+    <input type="password" id="senha" name="senha" required><br><br>
+    <input type="submit" value="Login">
 </form>
 {% endblock %}
