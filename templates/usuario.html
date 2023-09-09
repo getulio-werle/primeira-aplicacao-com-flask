@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Usuário{% endblock %}
+
+{% block conteudo %}
+    <img class="img_quadrada" src="{{ url_for('static', filename='img/professora.jpg') }}" alt="professora">
+    <h1>Meus dados: </h1>
+    <p>Nome: {{ nome_usuario }}</p>
+    <p>Profissão: {{ dados_usuario.profissao }}</p>
+    <p>Disciplina: {{ dados_usuario.disciplina }}</p>
+{% endblock %}

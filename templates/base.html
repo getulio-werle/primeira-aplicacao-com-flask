@@ -4,20 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Base</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block titulo %}Template Base{% endblock %}</title>
 </head>
 
 <body>
+    <img class='img_quadrada' src="https://www.ifro.edu.br/img/logo-ifro-hotsite.png" alt="logo_ifro">
+
     <nav>
-        <a href="">Início</a> |
-        <a href="">Contato</a> |
-        <a href="">Usuário</a>
+        <a href="/index">Início</a> |
+        <a href="/contato">Contato</a> |
+        <a href="/usuario">Usuário</a>
     </nav>
+
     {% block conteudo %}
-    <main>
-        <p>Seja bem vindo à minha página!</p>
-    </main>
+
     {% endblock %}
+    
+    <h6>Copyright₢ 2023</h6>
 </body>
 
 </html>
